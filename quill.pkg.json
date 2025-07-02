@@ -1,0 +1,10 @@
+{
+    "name": "os",
+    "authors": ["schwalbe_t"],
+    "desciption": "Implements operating system functionality, such as file I/O and child processes.",
+    "type": "library",
+    "backend": "c",
+    "dependencies": [
+        "https://github.com/quill-project/std"
+    ]
+}
