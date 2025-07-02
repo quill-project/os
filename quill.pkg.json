@@ -5,6 +5,6 @@
     "type": "library",
     "backend": "c",
     "dependencies": [
-        "https://github.com/quill-project/std"
+        "https://github.com/quill-project/std-c"
     ]
 }
