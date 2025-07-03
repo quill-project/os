@@ -335,6 +335,7 @@ pub ext fun Process::wait(self: Process) -> Int = "
         prc_data->exit_code = (quill_int_t) exit_code;
         prc_data->is_done = QUILL_TRUE;
         quill_mutex_unlock(&prc_data->lock);
+        return (quill_int_t) exit_code;
     #endif
 "
 
