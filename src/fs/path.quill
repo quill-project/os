@@ -10,7 +10,7 @@ ext fun get_file_sep() -> String = "
 "
 // The symbol that is most commonly used to divide a file path.
 // Defined as '\' on Windows and '/' on UNIX-like systems.
-val FILE_SEP: String = get_file_sep()
+pub val FILE_SEP: String = get_file_sep()
 
 ext fun get_path_sep() -> String = "
     #ifdef _WIN32
@@ -21,7 +21,7 @@ ext fun get_path_sep() -> String = "
 "
 // The symbol that is most commonly used to divide a list of file paths.
 // Defined as ';' on Windows and ':' on UNIX-like systems.
-val PATH_SEP: String = get_path_sep()
+pub val PATH_SEP: String = get_path_sep()
 
 // Returns the given path string with any file separators at the start (low end)
 // of the string removed.
