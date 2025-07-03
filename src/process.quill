@@ -1,6 +1,11 @@
 
 mod os
 
+pub ext fun exit(code: Int) = "
+    exit((int) #var(code));
+"
+
+
 struct Process()
 
 val REQUIRES_QUOTING: String = " \t\n\"\x0B"
