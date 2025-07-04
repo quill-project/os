@@ -5,9 +5,14 @@
     quill_string_t quill_os_read_pipe(HANDLE pipe) {
         DWORD bytes_available;
         if(!PeekNamedPipe(pipe, NULL, 0, NULL, &bytes_available, NULL)) {
-            quill_panic(quill_string_from_static_cstr(
-                "Failed to read from pipe\n"
-            ));
+            DWORD err = GetLastError();
+            if(err != ERROR_BROKEN_PIPE) {
+                quill_panic(quill_string_from_static_cstr(
+                    "Failed to read from pipe\n"
+                ));
+            }
+            // process simply exited and the pipe is empty
+            bytes_available = 0;  
         }
         if(bytes_available == 0) {
             return quill_string_from_static_cstr("");
@@ -41,6 +46,9 @@
             quill_panic(quill_string_from_static_cstr(
                 "Failed to read from pipe\n"
             ));
+        }
+        if(bytes_available == 0) {
+            return quill_string_from_static_cstr("");
         }
         quill_string_t res;
         res.length_bytes = bytes_available;
